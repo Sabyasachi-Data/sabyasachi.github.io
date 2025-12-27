@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Structural Engineering Researcher</title>
+    <title>Sabyasachi - Computational Mechanics & Machine Learning Researcher</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -49,7 +49,7 @@
 
     <section id="home" class="hero">
         <div>
-            <h1>Your Name</h1>
+            <h1>Sabyasachi Ghosh</h1>
             <p>PhD Researcher in Structural Engineering<br>Finite Element Analysis | Composite Materials | Vibration Dynamics</p>
             <a href="#about" class="btn">Learn More</a>
         </div>
@@ -108,24 +108,29 @@
     <section id="contact">
         <div class="container">
             <h2>Get In Touch</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="your.email@example.com" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="Your message..." required></textarea>
-                </div>
-                <button type="submit" class="btn" style="width:100%;">Send Message</button>
+            <form class="contact-form" action="https://formspree.io/f/xeeqajrb" method="POST" data-cf-success="#thank-you">>
+            <input type="hidden" name="_subject" value="New message from your portfolio site">
+            <input type="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+            <input type="text" name="_gotcha" style="display:none">
+            <textarea name="message" class="form-control" rows="5" placeholder="Your message..." required></textarea>
+            <button type="submit" class="btn" style="width:100%;">Send Message</button>
+                data-cf-success="https://yourusername.github.io/#contact
             </form>
         </div>
+        <div id="thank-you" class="thank-you-message" style="display:none; text-align:center; padding:3rem;">
+        <div style="background:#d4edda; color:#155724; padding:2rem; border-radius:15px; max-width:500px; margin:0 auto;">
+            <i class="fas fa-check-circle" style="font-size:4rem; color:#28a745; margin-bottom:1rem;"></i>
+            <h3>Thank You!</h3>
+            <p>Thank you for your mail, please expect a reply within 24 hours</p>
+        <a href="#contact" class="btn" style="background:#28a745;">Send Another Message</a>
+        </div>
+        </div>
+
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Your Name. Built with GitHub Pages. <i class="fas fa-heart" style="color:#e74c3c;"></i></p>
+            <p>&copy; 2026 Sabyasachi Ghosh. Built with GitHub Pages. <i class="fas fa-heart" style="color:#e74c3c;"></i></p>
         </div>
     </footer>
 
@@ -133,7 +138,31 @@
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault(); document.query
+                e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+        // Thank you message handler
+            const urlParams = new URLSearchParams(window.location.hash.slice(1));
+            if (urlParams.get('success') === 'true') {
+            document.getElementById('thank-you').style.display = 'block';
+            document.querySelector('.contact-form').style.display = 'none';
+            document.querySelector('#contact h2').textContent = 'Message Sent!';
+        }
+
+// Scroll to thank you on page load if needed
+            if (window.location.hash === '#thank-you') {
+                document.getElementById('thank-you').scrollIntoView({ behavior: 'smooth' });
+        }
+
+    </script>
+    
+</body>
+</html>
 
 
 
